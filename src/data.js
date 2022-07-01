@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid"
 
-const chillHop = () => {
+const Songs = () => {
   return [
     {
       name: "By Chance",
@@ -75,4 +75,4 @@ const chillHop = () => {
   ]
 }
 
-export default chillHop
+export default Songs
