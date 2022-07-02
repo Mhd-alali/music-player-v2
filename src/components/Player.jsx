@@ -9,7 +9,7 @@ function Player() {
           <p className="">01:00</p>
           <p className="">02:35</p>
         </div>
-        <input className="w-full" type="range" />
+        <input className="w-full" type="range"/>
       </div>
       <div className="flex gap-16">
         <div className="">
