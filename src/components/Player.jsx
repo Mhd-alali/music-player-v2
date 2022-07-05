@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Player() {
+function Player({song}) {
+  const audioref = React.useRef(null)
+  const imgref = React.useRef(null)
+
+  const [info,setInfo] = React.useState({
+    currentTime : null,
+    duration:null
+  })
+
+  let isPlaying = false;
+
+  //
+  ////Event handlers
+  //
+
+  function updateTime(eve) {
+    
+  }
+
+  function toggleSong(eve) {
+    const audio = audioref.current
+    const img = imgref.current
+
+    isPlaying = !isPlaying
+
+    if (isPlaying) {
+      audio.play()
+      img.src = "pause.svg"
+      return
+    }
+    
+    img.src = "play.svg"
+    audio.pause()
+  }
+  
 
   return (
     <div className="flex flex-col items-center gap-10 min-h-[20vh]">
@@ -14,35 +48,23 @@ function Player() {
       <div className="flex gap-16">
         <div className="">
           <svg className="w-12 lg:w-14"
-            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
-            <path d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" />
+            <path  d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" />
           </svg>
         </div>
-        <div className="">
-          <svg className="w-12 lg:w-14 block"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M6 5L6 19L10 19L10 5L6 5 z M 14 5L14 19L18 19L18 5L14 5 z" />
-          </svg>
-          <svg className="w-12 lg:w-14 "
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path d="M8,5v14l11-7L8,5z" />
-          </svg>
+        <div className="w-12 lg:w-14">
+          <img onClick={toggleSong} ref={imgref} src="play.svg" alt="play and pause button" />
         </div>
         <div className="">
           <svg className="w-12 lg:w-14"
-            xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
           >
             <path d="M10 5.9296875L8.5 7.4296875L13.070312 12L8.5 16.570312L10 18.070312L16.070312 12L10 5.9296875 z" />
           </svg>
         </div>
       </div>
+      <audio onTimeUpdate={updateTime} ref={audioref} src={song.audio}></audio>
     </div>
   );
 }

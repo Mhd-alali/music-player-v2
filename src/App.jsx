@@ -5,12 +5,12 @@ import Songs from "./data";
 
 function App() {
   let [songs, setSongs] = React.useState(Songs());
-  let [currentSong, setCurrentSong] = React.useState(songs[1]);
+  let [currentSong, setCurrentSong] = React.useState(songs[0]);
 
   return (
     <>
-      <Song song={currentSong} />
-      <Player />
+      <Song song={currentSong}/>
+      <Player song={currentSong}/>
     </>
   );
 }

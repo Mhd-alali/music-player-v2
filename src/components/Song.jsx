@@ -7,7 +7,6 @@ function Song({ song }) {
       <img className="w-1/5 rounded-full shadow-2xl shadow-gray-300 " src={song.cover} alt={song.name} />
       <h2 className="pt-12 px-4">{song.name}</h2>
       <h3>{song.artist}</h3>
-      <audio src={song.audio}></audio>
     </div>
   );
 }
