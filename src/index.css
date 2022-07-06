@@ -18,3 +18,9 @@
     background-color: rgba(155,155,155, 0.5);
     border-radius: 10px;
 }
+
+.library{
+    transition: width 250ms;
+    
+    @apply absolute w-32 h-screen shadow-lg overflow-auto bg-[hsl(267,68%,96%)] hover:shadow-3xl hover:w-80 ;
+}
