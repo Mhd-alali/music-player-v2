@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function Player({ song }) {
   const audioref = React.useRef(null);  
@@ -69,11 +69,11 @@ function Player({ song }) {
       </div>
       <div className="flex gap-16">
         <div className="">
-          <svg className="w-12 lg:w-14" viewBox="0 0 24 24">
+          <svg className="w-12 lg:w-14 " viewBox="0 0 24 24">
             <path d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" />
           </svg>
         </div>
-        <div className="w-12 lg:w-14">
+        <div className="w-12 lg:w-14 ">
           <img
             onClick={toggleSong}
             ref={imgref}

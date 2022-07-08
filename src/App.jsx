@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Library songs={songs} />
+      <Library songs={songs} setCurrentSong={setCurrentSong}/>
       <Song song={currentSong} />
       <Player song={currentSong} />
     </>
