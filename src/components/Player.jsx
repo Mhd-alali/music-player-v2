@@ -58,13 +58,13 @@ function Player({ song, audioref, isPlaying, setIsPlaying }) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-10 min-h-[20vh] ml-28">
+    <div className={`flex flex-col items-center gap-10 min-h-[20vh] `}>
       <div className="2xl:w-2/4 lg:w-2/3 w-11/12 flex flex-col">
         <div className="flex w-auto justify-between">
           <p className="">{formatTime(info.currentTime)}</p>
           <p className="">{formatTime(info.duration)}</p>
         </div>
-        <input onChange={handleDrag} ref={rangeref} className="w-full" type="range" />
+        <input onChange={handleDrag} ref={rangeref} className="range w-full" type="range" />
       </div>
       <div className="flex gap-16">
         <div className="">

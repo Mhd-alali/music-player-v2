@@ -29,7 +29,7 @@ function LibrarySong({ songs, song, setCurrentSong, audioref, isPlaying, setSong
 
 
   return (
-    <div className={`flex px-8 py-4 gap-2 cursor-pointer transition-all hover:bg-[hsl(267,68%,88%)] scale-0 h-0 group-hover:scale-100 group-hover:h-auto ${song.active ? "bg-[hsl(267,68%,80%)]" : ""}`} onClick={songSelectHandler}>
+    <div className={`flex px-8 py-4 gap-2 cursor-pointer transition-all hover:bg-[hsl(267,68%,90%)] ${song.active ? "bg-[hsl(267,68%,80%)]" : ""}`} onClick={songSelectHandler}>
       <img className="w-1/3" src={song.cover} alt={song.name} />
       <div className="flex flex-col ">
         <h3 className="text-gray-700 text-lg font-bold">{song.name}</h3>
@@ -39,11 +39,11 @@ function LibrarySong({ songs, song, setCurrentSong, audioref, isPlaying, setSong
   );
 }
 
-function Library({ songs, setCurrentSong, audioref, isPlaying, setSongs }) {
+function Library({ songs, setCurrentSong, audioref, isPlaying, setSongs, isLibraryOpen }) {
 
   return (
     <>
-      <div className={"library group"}>
+      <div className={`absolute top-0 h-screen shadow-lg overflow-auto transition-all duration-300 bg-[hsl(0,0%,95%)] w-80 ${isLibraryOpen ? "-left-80 opacity-0" : "opacity-100 left-0"} `}>
         <h2 className="px-8 pt-4 text-xl ">Library</h2>
         <div className="mt-4">
           {songs.map((song) => (
