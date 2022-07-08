@@ -1,7 +1,6 @@
 import React from "react";
 
-function Player({ song }) {
-  const audioref = React.useRef(null);  
+function Player({ song, audioref, isPlaying, setIsPlaying }) {
   const imgref = React.useRef(null);
   const rangeref = React.useRef(null);
 
@@ -10,12 +9,12 @@ function Player({ song }) {
     duration: null,
   });
 
-  let [isPlaying,setIsPlaying] = React.useState(false);
+
 
   //
   ////Event handlers
   //
-  
+
   function handleDurationChange() {
     let newInfo = { duration: audioref.current.duration, currentTime: 0 };
     rangeref.current.max = newInfo.duration;
@@ -24,13 +23,13 @@ function Player({ song }) {
   }
 
   function updateTime(eve) {
-    let newInfo = { ...info, currentTime: Math.floor(eve.target.currentTime)};
+    let newInfo = { ...info, currentTime: Math.floor(eve.target.currentTime) };
     rangeref.current.value = newInfo.currentTime;
     setInfo(newInfo)
   }
 
   function handleDrag(eve) {
-    let newInfo = { ...info, currentTime: Math.floor(eve.target.value)};
+    let newInfo = { ...info, currentTime: Math.floor(eve.target.value) };
     audioref.current.currentTime = newInfo.currentTime
     setInfo(newInfo)
   }
@@ -43,7 +42,7 @@ function Player({ song }) {
       audio.play();
       img.src = "pause.svg";
       setIsPlaying(true)
-    }else{ 
+    } else {
       img.src = "play.svg";
       audio.pause();
       setIsPlaying(false)
@@ -55,11 +54,11 @@ function Player({ song }) {
   //
 
   function formatTime(number) {
-    return `${Math.floor(number/60)}:${("0"+Math.floor(number%60)).slice(-2)}`;
+    return `${Math.floor(number / 60)}:${("0" + Math.floor(number % 60)).slice(-2)}`;
   }
 
   return (
-    <div className="flex flex-col items-center gap-10 min-h-[20vh]">
+    <div className="flex flex-col items-center gap-10 min-h-[20vh] ml-28">
       <div className="2xl:w-2/4 lg:w-2/3 w-11/12 flex flex-col">
         <div className="flex w-auto justify-between">
           <p className="">{formatTime(info.currentTime)}</p>

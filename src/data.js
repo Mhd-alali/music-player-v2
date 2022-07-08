@@ -10,6 +10,7 @@ const Songs = () => {
       artist: "SwuM",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=15224",
       color: ["#AE713D", "#283431"],
+      active:true,
       id: uuidv4(),
     },
     {
@@ -20,6 +21,7 @@ const Songs = () => {
       artist: "SwuM",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=15228",
       color: ["#AE713D", "#283431"],
+      active:false,
       id: uuidv4(),
     },
     {
@@ -30,6 +32,7 @@ const Songs = () => {
       artist: "SwuM",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=15235",
       color: ["#AE713D", "#283431"],
+      active:false,
       id: uuidv4(),
     },
     {
@@ -40,6 +43,7 @@ const Songs = () => {
       artist: "Swørn",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=9228",
       color: ["#C24E7E", "#5F1A4B"],
+      active:false,
       id: uuidv4(),
     },
     {
@@ -50,6 +54,7 @@ const Songs = () => {
       artist: "Swørn",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=7925",
       color: ["#C24E7E", "#5F1A4B"],
+      active:false,
       id: uuidv4(),
     },
     {
@@ -60,6 +65,7 @@ const Songs = () => {
       artist: "Aarigod",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=13005",
       color: ["#98BB5F", "#42995A"],
+      active:false,
       id: uuidv4(),
     },
     {
@@ -70,6 +76,7 @@ const Songs = () => {
       artist: "Aarigod",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=13007",
       color: ["#98BB5F", "#42995A"],
+      active:false,
       id: uuidv4(),
     },
   ]
