@@ -1,28 +1,11 @@
 import React from "react";
 
-function LibrarySong({ songs, song, setCurrentSong, audioref, isPlaying, setSongs }) {
-  async function songSelectHandler() {
+function LibrarySong({ songs, song, setCurrentSong, audioref, isPlaying}) {
+  function songSelectHandler() {
     const selectedSong = songs.indexOf(song)
-    await setCurrentSong(songs[selectedSong])
+    setCurrentSong(songs[selectedSong])
 
-    const newSongs = songs.map((s) => {
-      if (s.id === song.id) {
-        return {
-          ...s,
-          active: true
-        }
-      }
-      else {
-        return {
-          ...s,
-          active: false
-        }
-      }
-    })
-
-    setSongs(newSongs)
-
-    if (!!isPlaying) {
+    if (isPlaying) {
       audioref.current.play();
     }
   }
@@ -39,15 +22,15 @@ function LibrarySong({ songs, song, setCurrentSong, audioref, isPlaying, setSong
   );
 }
 
-function Library({ songs, setCurrentSong, audioref, isPlaying, setSongs, isLibraryOpen }) {
+function Library({ songs, setCurrentSong, audioref, isPlaying, isLibraryOpen}) {
 
   return (
     <>
-      <div className={`absolute top-0 h-screen shadow-lg overflow-auto transition-all duration-300 bg-[hsl(0,0%,95%)] w-80 ${isLibraryOpen ? "-left-80 opacity-0" : "opacity-100 left-0"} `}>
+      <div className={`absolute top-0 h-screen shadow-lg overflow-auto transition-all duration-300 bg-[hsl(0,0%,95%)] w-80 ${isLibraryOpen ? "left-0 opacity-100" : "opacity-0 -left-80"} `}>
         <h2 className="px-8 pt-4 text-xl ">Library</h2>
         <div className="mt-4">
           {songs.map((song) => (
-            <LibrarySong key={song.id} songs={songs} song={song} setCurrentSong={setCurrentSong} audioref={audioref} isPlaying={isPlaying} setSongs={setSongs} />
+            <LibrarySong key={song.id} songs={songs} song={song} setCurrentSong={setCurrentSong} audioref={audioref} isPlaying={isPlaying} />
           ))}
         </div>
       </div>

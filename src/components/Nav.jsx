@@ -3,7 +3,7 @@ import React from 'react';
 function Nav({isLibraryOpen, setIsLibraryOpen}) {
 
     return (<>
-        <nav className={`flex w-full items-center justify-between lg:max-w-5xl max-w-lg mx-auto mt-3 `}>
+        <nav className={`flex w-full items-center justify-between lg:max-w-2xl md:max-w-lg max-w-md mx-auto mt-3 `}>
             <h1 className='text-xl  font-bold'>Music Player V2</h1>
             <button onClick={()=>{setIsLibraryOpen(!isLibraryOpen)}} className='font-semibold border-4 rounded border-gray-900 px-2 py-1 hover:text-white hover:fill-white hover:bg-gray-900 transition'>
                 Library

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Player({ song, audioref, isPlaying, setIsPlaying }) {
+function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurrentSong }) {
   const imgref = React.useRef(null);
   const rangeref = React.useRef(null);
 
@@ -8,8 +8,6 @@ function Player({ song, audioref, isPlaying, setIsPlaying }) {
     currentTime: 0,
     duration: null,
   });
-
-
 
   //
   ////Event handlers
@@ -49,6 +47,42 @@ function Player({ song, audioref, isPlaying, setIsPlaying }) {
     }
   }
 
+  function handleBack() {
+    let song = songs.filter(song => song.id === currentSong.id)
+    let index = songs.indexOf(song[0])
+
+    console.log(currentSong);
+    console.log(song);
+    console.log(index);
+
+    if (index === 0) {
+      index = songs.length - 1
+    }
+    else {
+      index--
+    }
+
+    setCurrentSong(songs[index])
+  }
+
+  function handleForward() {
+    let song = songs.filter(song => song.id === currentSong.id)
+    let index = songs.indexOf(song[0])
+
+    console.log(currentSong);
+    console.log(song);
+    console.log(index);
+
+    if (index === songs.length - 1) {
+      index = 0
+    }
+    else {
+      index++
+    }
+
+    setCurrentSong(songs[index])
+  }
+
   //
   //// functions
   //
@@ -67,26 +101,27 @@ function Player({ song, audioref, isPlaying, setIsPlaying }) {
         <input onChange={handleDrag} ref={rangeref} className="range w-full" type="range" />
       </div>
       <div className="flex gap-16">
-        <div className="">
-          <svg className="w-12 lg:w-14 " viewBox="0 0 24 24">
-            <path d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" />
+        <div onClick={handleBack} className="">
+          <svg className="w-12 lg:w-14 hover:opacity-80" viewBox="0 0 24 24">
+            <path d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" fill="hsl(267,30%,40%)" />
           </svg>
         </div>
         <div className="w-12 lg:w-14 ">
           <img
+            className="hover:opacity-80"
             onClick={toggleSong}
             ref={imgref}
             src="play.svg"
             alt="play and pause button"
           />
         </div>
-        <div className="">
-          <svg className="w-12 lg:w-14" viewBox="0 0 24 24">
-            <path d="M10 5.9296875L8.5 7.4296875L13.070312 12L8.5 16.570312L10 18.070312L16.070312 12L10 5.9296875 z" />
+        <div onClick={handleForward} className="">
+          <svg className="w-12 lg:w-14 hover:opacity-80" viewBox="0 0 24 24">
+            <path d="M10 5.9296875L8.5 7.4296875L13.070312 12L8.5 16.570312L10 18.070312L16.070312 12L10 5.9296875 z" fill="hsl(267,30%,40%)" />
           </svg>
         </div>
       </div>
-      <audio onDurationChange={handleDurationChange} onTimeUpdate={updateTime} ref={audioref} src={song.audio}></audio>
+      <audio onDurationChange={handleDurationChange} onTimeUpdate={updateTime} ref={audioref} src={currentSong.audio}></audio>
     </div>
   );
 }
