@@ -51,10 +51,6 @@ function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurre
     let song = songs.filter(song => song.id === currentSong.id)
     let index = songs.indexOf(song[0])
 
-    console.log(currentSong);
-    console.log(song);
-    console.log(index);
-
     if (index === 0) {
       index = songs.length - 1
     }
@@ -68,10 +64,6 @@ function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurre
   function handleForward() {
     let song = songs.filter(song => song.id === currentSong.id)
     let index = songs.indexOf(song[0])
-
-    console.log(currentSong);
-    console.log(song);
-    console.log(index);
 
     if (index === songs.length - 1) {
       index = 0
@@ -100,7 +92,7 @@ function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurre
         </div>
         <input onChange={handleDrag} ref={rangeref} className="range w-full" type="range" />
       </div>
-      <div className="flex gap-16">
+      <div className="flex gap-[20vw] lg:gap-28">
         <div onClick={handleBack} className="">
           <svg className="w-12 lg:w-14 hover:opacity-80" viewBox="0 0 24 24">
             <path d="M13 5.9296875L6.9296875 12L13 18.070312L14.5 16.570312L9.9296875 12L14.5 7.4296875L13 5.9296875 z" fill="hsl(267,30%,40%)" />

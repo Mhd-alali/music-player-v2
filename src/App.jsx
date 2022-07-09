@@ -13,7 +13,6 @@ function App() {
   const audioref = React.useRef(null);
   
   useEffect(()=>{
-    console.log("done");
     const newSongs = songs.map((s) => {
       if (s.id === currentSong.id) {
         return {
@@ -53,7 +52,7 @@ function App() {
 
   return (
     <>
-      <div className={`transition duration-300 px-2 md:p-0 ${isLibraryOpen?"translate-x-40":"translate-x-0"}`}>
+      <div className={`transition duration-300 px-2 md:p-0 ${isLibraryOpen?"md:translate-x-40":"md:translate-x-0"}`}>
         <Nav setIsLibraryOpen={setIsLibraryOpen} isLibraryOpen={isLibraryOpen}/>
         <Song song={currentSong} />
         <Player {...playerProps}/>
