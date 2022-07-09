@@ -1,12 +1,14 @@
 import React from "react";
 
-function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurrentSong }) {
+function Player({ currentSong, audioref, isPlaying, setIsPlaying, songs, setCurrentSong }) {
   const imgref = React.useRef(null);
   const rangeref = React.useRef(null);
+  
 
   const [info, setInfo] = React.useState({
     currentTime: 0,
     duration: null,
+    animationPresentage:0
   });
 
   //
@@ -21,13 +23,15 @@ function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurre
   }
 
   function updateTime(eve) {
-    let newInfo = { ...info, currentTime: Math.floor(eve.target.currentTime) };
+    let newPresentage = (rangeref.current.value /info.duration) * 100;
+    let newInfo = { ...info, currentTime: Math.floor(eve.target.currentTime) ,animationPresentage:newPresentage};
     rangeref.current.value = newInfo.currentTime;
     setInfo(newInfo)
   }
-
+  
   function handleDrag(eve) {
-    let newInfo = { ...info, currentTime: Math.floor(eve.target.value) };
+    let newPresentage = (eve.target.value /info.duration) * 100;
+    let newInfo = { ...info, currentTime: Math.floor(eve.target.value) ,animationPresentage:newPresentage};
     audioref.current.currentTime = newInfo.currentTime
     setInfo(newInfo)
   }
@@ -90,7 +94,10 @@ function Player({ currentSong, audioref, isPlaying,setIsPlaying, songs, setCurre
           <p className="">{formatTime(info.currentTime)}</p>
           <p className="">{formatTime(info.duration)}</p>
         </div>
-        <input onChange={handleDrag} ref={rangeref} className="range w-full" type="range" />
+        <div className="track">
+          <input onChange={handleDrag} ref={rangeref} className="range w-full" type="range" />
+          <div className="animate-track" style={{width:`calc(${info.animationPresentage}% + 2px)`}}></div>
+        </div>
       </div>
       <div className="flex gap-[20vw] lg:gap-28">
         <div onClick={handleBack} className="">

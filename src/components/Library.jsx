@@ -26,7 +26,7 @@ function Library({ songs, setCurrentSong, audioref, isPlaying, isLibraryOpen}) {
 
   return (
     <>
-      <div className={`absolute top-0 h-screen shadow-lg overflow-auto transition-all duration-300 bg-[hsl(0,0%,95%)] w-32 md:w-80 ${isLibraryOpen ? "left-0 opacity-100" : "opacity-0 -left-80"} `}>
+      <div className={`absolute top-0 h-screen shadow-lg overflow-auto transition-all duration-300 bg-[hsl(0,0%,95%)] w-80 ${isLibraryOpen ? "left-0 opacity-100" : "opacity-0 -left-80"} `}>
         <h2 className="px-8 pt-4 text-xl ">Library</h2>
         <div className="mt-4">
           {songs.map((song) => (

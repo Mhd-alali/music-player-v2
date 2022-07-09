@@ -2,16 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-*,*::before,*::after{
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scrollbar-width: thin;
-    scrollbar-color: rgba(155,155,155,0.5) transparent;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
     -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select:none;
-        user-select:none;
-        -o-user-select:none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+}
+
+.range {
+    -webkit-appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background-color: hsl(267, 68%, 40%);
+    border-radius: 50%;
+    transform: translateY(-7.5px);
+}
+.range::-webkit-slider-thumb:active {
+    background-color: hsl(267, 68%, 30%);
+}
+
+.range:active ~ .animate-track {
+    background-color: hsl(267, 68%, 30%);
+}
+
+.track {
+    height: 0.3rem;
+    background-color: #eee;
+    padding: 0;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.animate-track {
+    border-radius: 1rem;
+    background-color: hsl(267, 68%, 40%);
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
