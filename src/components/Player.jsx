@@ -79,6 +79,20 @@ function Player({ currentSong, audioref, isPlaying, setIsPlaying, songs, setCurr
     setCurrentSong(songs[index])
   }
 
+  function handleEnded() {
+    let song = songs.filter(song => song.id === currentSong.id)
+    let index = songs.indexOf(song[0])
+
+    if (index === songs.length - 1) {
+      index = 0
+    }
+    else {
+      index++
+    }
+
+    setCurrentSong(songs[index])
+  }
+
   //
   //// functions
   //
@@ -120,7 +134,7 @@ function Player({ currentSong, audioref, isPlaying, setIsPlaying, songs, setCurr
           </svg>
         </div>
       </div>
-      <audio onDurationChange={handleDurationChange} onTimeUpdate={updateTime} ref={audioref} src={currentSong.audio}></audio>
+      <audio onEnded={handleEnded} onDurationChange={handleDurationChange} onTimeUpdate={updateTime} ref={audioref} src={currentSong.audio}></audio>
     </div>
   );
 }
